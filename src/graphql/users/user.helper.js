@@ -1,6 +1,8 @@
 // *************** IMPORT LIBRARY ***************
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+
+// *************** IMPORT VALIDATORS ***************
 import UserValidator from './user.validator.js';
 
 /**
