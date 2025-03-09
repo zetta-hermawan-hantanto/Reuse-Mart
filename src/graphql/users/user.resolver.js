@@ -95,7 +95,7 @@ async function Login(_, { email, password }) {
     UserValidator.ValidateLoginInput({ email, password });
 
     // *************** Check is user exist using email
-    const user = await UserModel.findOne({ email, status: 'active' }).select('password').lean();
+    const user = await UserModel.findOne({ email, status: 'active' }).select('_id password').lean();
     if (!user) throw new Error('Email or password is invalid');
 
     // *************** Check is password of user is same
@@ -103,7 +103,7 @@ async function Login(_, { email, password }) {
     if (!isPasswordSame) throw new Error('Email or password is invalid');
 
     // *************** Generate jwt token
-    const token = UserHelper.GenerateTokenJWT({ userId: String(user._id) });
+    const token = UserHelper.GenerateTokenJWT({ userId: user._id });
     if (!token) throw new Error('Error when generate token');
 
     return token;

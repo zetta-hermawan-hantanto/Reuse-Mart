@@ -48,7 +48,7 @@ function ComparePasswordUser({ passwordInput, passwordUser }) {
  */
 function GenerateTokenJWT({ userId }) {
   // *************** Validate parameters
-  UserValidator.ValidateUserId(userId);
+  UserValidator.ValidateUserId({ userId });
 
   // *************** Generate token jwt
   const token = jwt.sign({ userId }, process.env.SECRET_KEY, { expiresIn: '1d' });

@@ -37,7 +37,7 @@ function ValidateComparePasswordUserInput({ passwordInput, passwordUser }) {
     passwordInput: Joi.string().trim().pattern(passwordPattern).required(),
 
     // *************** Validate password user
-    passwordUser: Joi.string().trim().pattern(passwordPattern).required(),
+    passwordUser: Joi.string().trim().required(),
   });
 
   const { error } = schema.validate({ passwordInput, passwordUser });
