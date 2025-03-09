@@ -66,7 +66,6 @@ const userSchema = new Schema(
     // Phone number of the user
     phone_number: {
       type: String,
-      required: true,
       default: '',
     },
   },

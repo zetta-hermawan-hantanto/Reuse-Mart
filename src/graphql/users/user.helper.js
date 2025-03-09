@@ -1,7 +1,7 @@
 // *************** IMPORT LIBRARY ***************
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import UserValidator from './user.validator';
+import UserValidator from './user.validator.js';
 
 /**
  * The function `HashPasswordUser` hashes a user's password using bcrypt with error handling.
@@ -12,7 +12,7 @@ async function HashPasswordUser({ password }) {
   try {
     // *************** Validate parameters
     UserValidator.ValidatePasswordUser({ password });
-    
+
     // *************** Hash password of user using bcrypt
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = bcrypt.hashSync(password, salt);

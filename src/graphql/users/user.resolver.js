@@ -54,14 +54,14 @@ async function Register(_, { firstName, lastName, email, password }) {
     if (isUserExist) throw new Error('Email have used by another account');
 
     // *************** Hash password using bcrypt
-    const password = UserHelper.HashPasswordUser({ password });
-    if (!password) throw new Error('Error when hashing password of user');
+    const hashedPassword = await UserHelper.HashPasswordUser({ password });
+    if (!hashedPassword) throw new Error('Error when hashing password of user');
 
     const newUserData = {
       first_name: firstName,
       last_name: lastName,
       email,
-      password,
+      password: hashedPassword,
       address: [],
       status: 'active',
       role: 'buyer',
