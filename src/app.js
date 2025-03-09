@@ -14,11 +14,17 @@ import { typeDefs, resolvers } from './graphql/index.js';
 // *************** IMPORT DATABASE ***************
 import ConnectToDatabase from '../database/mongoose.js';
 
+// *************** IMPORT ROUTES ***************
+import UserRouter from './routes/user.route.js';
+
 dotenv.config();
 
 ConnectToDatabase();
 
 const app = express();
+
+app.use('/user', UserRouter);
+
 const httpServer = http.createServer(app);
 
 const server = new ApolloServer({
